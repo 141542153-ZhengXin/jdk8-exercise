@@ -79,6 +79,18 @@ public class OptionalUtil {
     }
 
     /**
+     * flatMap():转换函数(可获取嵌套对象)
+     *
+     * @param optional
+     */
+    public static void flatMap(Optional<OptionalDTO> optional) {
+        final String opName = optional.flatMap(OptionalDTO::getOpName).get();
+        final String opName2 = optional.map(OptionalDTO::getOpName).get().get();
+        System.out.printf("flatMap opName = %s%n", opName);
+        System.out.printf("map opName = %s%n", opName2);
+    }
+
+    /**
      * filter():对包装的值运行内联测试
      *
      * @param optional

@@ -1,7 +1,9 @@
 import com.geek.optional.OptionalDTO;
 import com.geek.optional.OptionalUtil;
+import com.google.common.collect.Lists;
 import org.junit.Test;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -45,6 +47,13 @@ public class OptionalTx {
     public void map() {
         final Optional<OptionalDTO> noEmptyOp = Optional.of(OptionalDTO.builder().id("1").name("optional").content("hello").build());
         OptionalUtil.map(noEmptyOp);
+    }
+
+    @Test
+    public void flatMap() {
+        final Optional<OptionalDTO> noEmptyOp = Optional.of(
+                OptionalDTO.builder().id("1").name("optional").content("hello").opName(Optional.of("opName")).build());
+        OptionalUtil.flatMap(noEmptyOp);
     }
 
     @Test
